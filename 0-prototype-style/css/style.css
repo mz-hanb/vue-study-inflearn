@@ -19,13 +19,15 @@ header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px
 
 .keywords-ui-tabs { border: 1px solid #e5e5e5; width: 100%; display: table; }
 
-.keywords-ui-tabs li { cursor: pointer; padding: 13px 0; display: table-cell; text-align: center; }
+.keywords-ui-tabs li { display: table-cell; cursor: pointer; padding: 13px 0; text-align: center; }
 
 .keywords-ui-tabs li.on { background: #eee; }
 
-.keywords-ui-list { margin-top: 20px; }
+.keywords-ui-list { margin-top: 20px; padding: 0 10px; }
 
 .keywords-ui-list li { margin-top: 10px; padding: 10px 0; border-bottom: 1px solid #eee; }
+
+.keywords-ui-list .num { margin-right: 10px; font-weight: bold; color: #e5e5e5; }
 
 .keywords-ui-list .texts { display: inline-block; width: 94%; }
 
@@ -38,5 +40,5 @@ header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px
 .results-list .img img { width: 100%; }
 
 /* common */
-.btn-remove { float: right; padding: 2px 7px; background: none; border: none; background-color: #eee; border-radius: 50%; cursor: pointer; }
+.btn-remove { float: right; padding: 5px 8px; background: none; border: none; background-color: #eee; border-radius: 50%; cursor: pointer; line-height: 1; }
 /*# sourceMappingURL=style.css.map */

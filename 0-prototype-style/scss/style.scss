@@ -49,9 +49,9 @@ header {
     width: 100%;
     display: table;
     li {
-      cursor: pointer;
-      padding: 13px 0;
       display: table-cell;
+      cursor: pointer;
+      padding: 13px 0;      
       text-align: center;
       &.on {
         background: #eee;
@@ -60,10 +60,16 @@ header {
   }
   &-list {
     margin-top: 20px;
+    padding: 0 10px;
     li {
       margin-top: 10px;
       padding: 10px 0;
       border-bottom: 1px solid #eee;      
+    }
+    .num{
+      margin-right: 10px;
+      font-weight: bold;
+      color: #e5e5e5;
     }
     .texts{
       display: inline-block;
@@ -99,10 +105,11 @@ header {
 /* common */
 .btn-remove {
   float: right;
-  padding: 2px 7px;
+  padding: 5px 8px;
   background: none;
   border: none;
   background-color: #eee;
   border-radius: 50%;
   cursor: pointer;
+  line-height: 1;
 }

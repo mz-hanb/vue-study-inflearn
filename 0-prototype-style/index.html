@@ -5,78 +5,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>shopping mall search: vanilla js</title>
+  <title>shopping mall search: prototype style</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
-  <div class="wrap">
+  <div id="app" class="wrap">
     <header>
       <h1>검색</h1>
     </header>
 
     <!-- search ui -->
-    <form id="search-form" class="search-form" action="">
-      <input type="text">
-      <button type="button" class="btn-remove">x</button>
+    <form id="search-form" class="search-form" @submit.prevent="showResult(searchWords)">
+      <input type="text" v-model="searchWords" @keyup="checkWords()">
+      <button type="button" class="btn-remove" v-if="searchWords.length" @click="initSearch()">x</button>
     </form>
 
     <!-- search-wrap -->
-    <div class="keywords-ui">
+    <div class="keywords-ui" v-if="!onResultMode">
       <ul class="keywords-ui-tabs">
-        <li class="on">추전 검색어</li>
-        <li>최근 검색어</li>
+        <li v-for="(kind, idx) in searchListKind" :class="{on: kind.name === selectedKind}" @click="setSearchList(kind.name)">{{kind.label}}</li>        
       </ul>
-
       <ul class="keywords-ui-list">
-        <li>
+        <li v-for="( item, idx ) in searchList" @click="showResult(item.word)">
           <p class="texts">
-            <span class="num">1</span>
-            검색어
-            <span class="date">05/02</span>
+            <span class="num" v-text="idx+1"></span>
+            {{item.word}}
+            <span v-if="selectedKind === 'latest'" v-if="item.date" class="date">{{item.date}}</span>
           </p>
-          <button type="button" class="btn-remove">x</button>
-        </li>
-        <li>
-          <p class="texts">
-            <span class="num">1</span>
-            검색어
-            <span class="date">05/02</span>
-          </p>
-          <button type="button" class="btn-remove">x</button>
-        </li>
-
-        <li>
-          <p class="texts">
-            <span class="num">1</span>
-            검색어
-            <span class="date">05/02</span>
-          </p>
-          <button type="button" class="btn-remove">x</button>
-        </li>
+          <button v-if="selectedKind === 'latest'" type="button" class="btn-remove" @click.stop="removeLatestSearchList(idx)">x</button>
+        </li>        
       </ul>
     </div>
 
     <!-- result -->
-    <ul class="results-list">
-      <li>
+    <ul class="results-list" v-if="onResultMode">
+      <li v-for="item in results">
         <div class="img">
-          <img src="./imgs/food1.jpg" alt="">
+          <img :src="item.img" alt="">
         </div>
-        <p class="desc">stake</p>
-      </li>
-      <li>
-        <div class="img">
-          <img src="./imgs/food2.jpg" alt="">
-        </div>
-        <p class="desc">stake</p>
+        <p class="desc">{{item.desc}}</p>
       </li>
     </ul>
-
   </div>
-
-
+  
+<script src="https://unpkg.com/vue"></script>
+<script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+<script src="./models/ResultModel.js"></script>
+<script src="./models/SearchListModel.js"></script>
+<script src="./js/app.js"></script>
 </body>
 
 </html>
