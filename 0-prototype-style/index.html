@@ -31,7 +31,7 @@
           <p class="texts">
             <span class="num" v-text="idx+1"></span>
             {{item.word}}
-            <span v-if="selectedKind === 'latest'" v-if="item.date" class="date">{{item.date}}</span>
+            <span v-if="item.date" class="date">{{item.date}}</span>
           </p>
           <button v-if="selectedKind === 'latest'" type="button" class="btn-remove" @click.stop="removeLatestSearchList(idx)">x</button>
         </li>        
